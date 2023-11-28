@@ -1,0 +1,4 @@
+scattertext>=0.1.19
+pandas>=1.4.3
+emoji>=2.2.0
+spacy
