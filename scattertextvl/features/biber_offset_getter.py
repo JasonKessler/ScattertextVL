@@ -10,7 +10,7 @@ from scattertextvl.features.biber.biber_sentence_processor import process_senten
 class BiberOffsetGetter(FeatAndOffsetGetter):
     def __init__(self):
         warnings.warn(
-            "Cite as:\n"
+            "In addition to citing Scattertext, cite as:\n"
             "Elen Le Foll and Muhammad Shakir. MFTE Python 1.0. 2023. "
             "https://github.com/mshakirDr/MFTE"
         )

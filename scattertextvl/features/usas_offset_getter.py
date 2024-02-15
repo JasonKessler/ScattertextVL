@@ -64,8 +64,8 @@ class USASOffsetGetter(FeatAndOffsetGetter):
             nlp = spacy.load('en_core_web_sm', disable=['ner'])
         self.nlp = nlp
         self.stringstore = StringStore()
-        pattern_names = self.__load_pattern_names()
-        patterns = json.loads(gzip.decompress(pkgutil.get_data('scattertext', 'data/enusaspats.json.gz')))
+        pattern_names = self.load_pattern_names()
+        patterns = json.loads(gzip.decompress(pkgutil.get_data('scattertextvl', 'data/enusaspats.json.gz')))
         labeled_patterns = []
         for pattern in patterns:
             display_label = self.__get_display_label_from_internal_label(pattern['label'], tier, pattern_names)
@@ -93,9 +93,9 @@ class USASOffsetGetter(FeatAndOffsetGetter):
             return pattern_names[label]
 
 
-    def __load_pattern_names(self) -> Dict[str, str]:
+    def load_pattern_names(self) -> Dict[str, str]:
         raw = gzip.decompress(
-            pkgutil.get_data('scattertext', 'data/en_usas_subcategories.tsv.gz')
+            pkgutil.get_data('scattertextvl', 'data/en_usas_subcategories.tsv.gz')
         ).decode('utf8')
         return {line.split('\t')[0].strip(): line.split('\t')[1]
                 for line in raw.split('\n')[1:]
@@ -107,7 +107,7 @@ class USASOffsetGetter(FeatAndOffsetGetter):
             for line in set(
                 line.strip()
                 for line in gzip.decompress(
-                    pkgutil.get_data('scattertext', 'data/en_usas.jsonl.gz')
+                    pkgutil.get_data('scattertextvl', 'data/en_usas.jsonl.gz')
                 ).decode('utf-8').split('\n')
             )
             if line.strip()
