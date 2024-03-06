@@ -6,8 +6,7 @@ This package includes:
 - wrappers around Biber register features, incorporating code from https://github.com/mshakirDr/MFTE (Le Foll and Shaki, 2023).
 - wrappers around arguing features (Somoasundaran et al.) (2007).
 
-
-### Visualizing the UCREL Semantic Analysis System
+### Visualizing the UCREL Semantic Analysis System (USAS)
 
 The UCREL Semantic Analysis System (or USAS) [(Piao et al., 2015)](http://www.lrec-conf.org/proceedings/lrec2016/pdf/257_Paper.pdf) uses a set of lexico syntactic patterns to assign 
 word-part-of-speech pairs and multi-word lexico-syntactic patterns to a hierarchy of semantic tags. Note that
@@ -189,7 +188,6 @@ plot_df = pd.merge(
 ).reset_index().rename(columns={'index': 'term'}).set_index('term')
 
 ```
-
 
 
 Finally, we produce the interactive visualization using:
