@@ -1,3 +1,4 @@
+import logging
 import warnings
 
 import spacy
@@ -19,6 +20,9 @@ class BiberOffsetGetter(FeatAndOffsetGetter):
         return []
 
     def get_metadata_offsets(self, doc: spacy.tokens.doc.Doc) -> list:
+        if len(doc) and all(tok.tag_ == '' for tok in doc):
+            logging.warning("All POS tags in `doc` are ''. Check to make sure you properly "
+                            "initialized the tagger.")
         offset_tokens = {}
         for sent in doc.sents:
             words = [w.lower_ + '_' + w.tag_ for w in sent]
